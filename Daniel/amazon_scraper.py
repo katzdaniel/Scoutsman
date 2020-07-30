@@ -12,6 +12,8 @@ from fake_useragent import UserAgent
 options = webdriver.ChromeOptions()
 #options.add_argument('--headless')
 options.add_argument(f'--user-agent={UserAgent().random}')
+
+
 driver = webdriver.Chrome('./chromedriver', options=options)
 
 main_url = 'https://amazon.com/'
@@ -39,9 +41,12 @@ with open(file_name, 'a+') as f:
 
         f.seek(0)
 
-        if getsize(file_name) != 0: load(f)
+        if getsize(file_name) != 0:
+            products_list = load(f)
     
         for i in range(20):
+
+        sleep(uniform(.3, 1.4))
     
             if i != 0:
                 sleep(uniform(.2, .9))
